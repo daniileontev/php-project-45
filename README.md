@@ -5,7 +5,3 @@
 <a href="https://codeclimate.com/github/daniileontev/php-project-45/maintainability"><img src="https://api.codeclimate.com/v1/badges/004b960bf776efafceae/maintainability" /></a>
 ### Asciinema for make install and make brain-even
 [![asciicast](https://asciinema.org/a/Ykxyfp7XsGVfH5RfxSTs0n3GM.svg)](https://asciinema.org/a/Ykxyfp7XsGVfH5RfxSTs0n3GM)
-
-<p>This is some text.</p>
-<script src="https://asciinema.org/a/14.js" id="asciicast-14" async></script>
-<p>This is some other text.</p>
