@@ -3,6 +3,7 @@
 
 namespace BrainGames\src\Engine;
 
+use function BrainGames\src\Cli\greeting;
 
 $autoloadPath1 = __DIR__ . '/../../../autoload.php';
 $autoloadPath2 = __DIR__ . '/../../vendor/autoload.php';
@@ -13,4 +14,58 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-startBrainCalcGame();
+getStart();
+
+function getStart(): void
+{
+    $userName = greeting();
+    brainGameRule('calc');
+    startCalcGame($userName);
+}
+
+function startCalcGame($userName): void
+{
+
+    $isCorrect = true;
+    $maxRounds = 3;
+    $correctAnswerCount = 0;
+    while ($isCorrect && $correctAnswerCount < $maxRounds) {
+        if ($correctAnswerCount == 0) {
+            $questionType = 1;
+        } elseif ($correctAnswerCount == 1) {
+            $questionType = 2;
+        } elseif ($correctAnswerCount == 2) {
+            $questionType = 3;
+        }
+
+        $numGenerator1 = generateNumber();
+        $numGenerator2 = generateNumber();
+
+        if ($questionType == 1) {
+            $operator = '+';
+            $correctAnswer = addition($numGenerator1, $numGenerator2);
+        } elseif ($questionType == 2) {
+            $operator = '-';
+            $correctAnswer = subtraction($numGenerator1, $numGenerator2);
+        } elseif ($questionType == 3) {
+            $operator = '*';
+            $correctAnswer = multiplication($numGenerator1, $numGenerator2);
+        }
+
+        echo("Question: {$numGenerator1} {$operator} {$numGenerator2}\n");
+        $userAnswer = trim(fgets(STDIN));
+        echo("Your answer: {$userAnswer}\n");
+
+        if ($userAnswer == $correctAnswer) {
+            echo "Correct!\n";
+            $correctAnswerCount++;
+        } else {
+            echo "'{$userAnswer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'\n";
+            $isCorrect = false;
+        }
+        if ($correctAnswerCount === 3) {
+            $isCorrect = false;
+            echo "Congratulations, {$userName}!\n";
+        }
+    }
+}

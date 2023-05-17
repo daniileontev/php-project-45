@@ -3,6 +3,8 @@
 
 namespace BrainGames\src\Engine;
 
+use function BrainGames\src\Cli\greeting;
+
 $autoloadPath1 = __DIR__ . '/../../../autoload.php';
 $autoloadPath2 = __DIR__ . '/../../vendor/autoload.php';
 
@@ -12,4 +14,40 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-startBrainEvenGame();
+getStart();
+
+function getStart(): void
+{
+    $userName = greeting();
+    brainGameRule('even');
+    startEvenGame($userName);
+}
+
+function startEvenGame($userName): void
+{
+    $maxRounds = 3;
+    $isCorrect = true;
+    $correctAnswerCount = 0;
+    while ($isCorrect && $correctAnswerCount < $maxRounds) {
+        $numGenerate = mt_rand(1, 100);
+        echo("Question: {$numGenerate}\n");
+        $userAnswer = trim(fgets(STDIN));
+        echo("Your answer: {$userAnswer}\n");
+        if (!numCheck($numGenerate) && $userAnswer === 'no') {
+            echo "Correct!\n";
+            $correctAnswerCount++;
+        } elseif (numCheck($numGenerate) && $userAnswer === 'yes') {
+            echo "Correct!\n";
+            $correctAnswerCount++;
+        } else {
+            $isCorrect = false;
+            echo "'{$userAnswer}' is the wrong answer ;(. The correct answer was"
+                . (!numCheck($numGenerate) ? ' no' : ' yes') . ".\n"
+                . "Let's try again, {$userName}!\n";
+        }
+        if ($correctAnswerCount == $maxRounds) {
+            $isCorrect = false;
+            echo "Congratulations, {$userName}!\n";
+        }
+    }
+}
