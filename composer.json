@@ -5,7 +5,8 @@
         "src/Games/brain-even",
         "src/Games/brain-calc",
         "src/Games/brain-gcd",
-        "src/Games/brain-progression"
+        "src/Games/brain-progression",
+        "src/Games/brain-prime"
     ],
     "description": "First project for study, by Hexlet.",
     "type": "library",
