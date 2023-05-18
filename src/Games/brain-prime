@@ -1,0 +1,43 @@
+#!/usr/bin/env php
+<?php
+
+namespace BrainGames\src\Engine;
+
+$autoloadPath1 = __DIR__ . '/../../../autoload.php';
+$autoloadPath2 = __DIR__ . '/../../vendor/autoload.php';
+
+if (file_exists($autoloadPath1)) {
+    require_once $autoloadPath1;
+} else {
+    require_once $autoloadPath2;
+}
+
+getStart("prime");
+
+function startPrimeGame($userName)
+{
+    $maxRounds = 3;
+    $correctAnswerCount = 0;
+    $isCorrect = true;
+    while($isCorrect && $correctAnswerCount < $maxRounds) {
+        $num = mt_rand(1,100);
+        echo "Question: {$num}\nYour answer: ";
+        $userAnswer = trim(fgets(STDIN));
+        if (!isPrime($num) && $userAnswer === 'no') {
+            echo "Correct!\n";
+            $correctAnswerCount++;
+        } elseif (isPrime($num) && $userAnswer === 'yes') {
+            echo "Correct!\n";
+            $correctAnswerCount++;
+        } else {
+            $isCorrect = false;
+            echo "'{$userAnswer}' is the wrong answer ;(. The correct answer was"
+                . (!isPrime($num) ? "'no'" : "'yes'") . ".\n"
+                . "Let's try again, {$userName}!\n";
+        }
+        if ($correctAnswerCount == $maxRounds) {
+            $isCorrect = false;
+            echo "Congratulations, {$userName}!\n";
+        }
+    }
+}
