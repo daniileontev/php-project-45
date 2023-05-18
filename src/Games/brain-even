@@ -14,14 +14,7 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-getStart();
-
-function getStart(): void
-{
-    $userName = greeting();
-    brainGameRule('even');
-    startEvenGame($userName);
-}
+getStart("even");
 
 function startEvenGame($userName): void
 {
@@ -41,7 +34,7 @@ function startEvenGame($userName): void
         } else {
             $isCorrect = false;
             echo "'{$userAnswer}' is the wrong answer ;(. The correct answer was"
-                . (!numCheck($numGenerate) ? ' no' : ' yes') . ".\n"
+                . (!numCheck($numGenerate) ? 'no' : 'yes') . ".\n"
                 . "Let's try again, {$userName}!\n";
         }
         if ($correctAnswerCount == $maxRounds) {

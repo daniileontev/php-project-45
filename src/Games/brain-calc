@@ -14,14 +14,7 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-getStart();
-
-function getStart(): void
-{
-    $userName = greeting();
-    brainGameRule('calc');
-    startCalcGame($userName);
-}
+getStart("calc");
 
 function startCalcGame($userName): void
 {
