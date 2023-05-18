@@ -19,6 +19,9 @@ function brainGameRule(string $gameName): void
         case 'gcd':
             echo("Find the greatest common divisor of given numbers.\n");
             break;
+        case "progression":
+            echo("What number is missing in the progression?\n");
+            break;
         default:
             echo "Unknown game specified!\n";
             break;
