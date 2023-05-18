@@ -52,10 +52,8 @@ function startCalcGame($userName): void
             $correctAnswer = multiplication($numGenerator1, $numGenerator2);
         }
 
-        echo("Question: {$numGenerator1} {$operator} {$numGenerator2}\n");
+        echo("Question: {$numGenerator1} {$operator} {$numGenerator2}\nYour answer: ");
         $userAnswer = trim(fgets(STDIN));
-        echo("Your answer: {$userAnswer}\n");
-
         if ($userAnswer == $correctAnswer) {
             echo "Correct!\n";
             $correctAnswerCount++;

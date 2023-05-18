@@ -30,9 +30,8 @@ function startEvenGame($userName): void
     $correctAnswerCount = 0;
     while ($isCorrect && $correctAnswerCount < $maxRounds) {
         $numGenerate = mt_rand(1, 100);
-        echo("Question: {$numGenerate}\n");
+        echo("Question: {$numGenerate}\nYour answer: ");
         $userAnswer = trim(fgets(STDIN));
-        echo("Your answer: {$userAnswer}\n");
         if (!numCheck($numGenerate) && $userAnswer === 'no') {
             echo "Correct!\n";
             $correctAnswerCount++;
