@@ -1,3 +1,13 @@
+### Hexlet tests and linter status:
+[![Actions Status](https://github.com/daniileontev/php-project-45/workflows/hexlet-check/badge.svg)](https://github.com/daniileontev/php-project-45/actions)
+### About
+Project "Brain-games" is a collection of five math games: 
+- "brain-even"
+- "brain-calc"
+- "brain-gcd"
+- "brain-progression"
+- "brain-prime"
+
 ### Project
 The project is running on PHP 8.1.2
 
@@ -8,10 +18,8 @@ $ git clone https://github.com/daniileontev/php-project-45
 $ cd php-project-45
 
 $ make install
-
-### Hexlet tests and linter status:
-[![Actions Status](https://github.com/daniileontev/php-project-45/workflows/hexlet-check/badge.svg)](https://github.com/daniileontev/php-project-45/actions)
-
+### How to play?
+To start the game, enter the command "make {game-name}". Ex. make brain-even.
 ### Maintainability status:
 <a href="https://codeclimate.com/github/daniileontev/php-project-45/maintainability"><img src="https://api.codeclimate.com/v1/badges/004b960bf776efafceae/maintainability" /></a>
 ### Asciinema for make install and make brain-even:
