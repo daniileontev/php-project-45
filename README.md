@@ -1,3 +1,14 @@
+### Project
+The project is running on PHP 8.1.2
+
+### Install:
+
+$ git clone https://github.com/daniileontev/php-project-45
+
+$ cd php-project-45
+
+$ make install
+
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/daniileontev/php-project-45/workflows/hexlet-check/badge.svg)](https://github.com/daniileontev/php-project-45/actions)
 
