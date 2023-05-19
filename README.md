@@ -12,11 +12,8 @@ Project "Brain-games" is a collection of five math games:
 The project is running on PHP 8.1.2
 
 ### Install:
-
 $ git clone https://github.com/daniileontev/php-project-45
-
 $ cd php-project-45
-
 $ make install
 ### How to play?
 To start the game, enter the command "make {game-name}". Ex. make brain-even.
