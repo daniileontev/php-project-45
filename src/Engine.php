@@ -93,16 +93,13 @@ function dividerCheck($num1, $num2)
 
 function isPrime($num): bool
 {
-    $n = 0;
-    for ($i = 2; $i < ($num / 2 + 1); $i++) {
+    if ($num <= 1) {
+        return false; // числа 0 и 1 не являются простыми
+    }
+    for ($i = 2; $i <= sqrt($num); $i++) {
         if ($num % $i == 0) {
-            $n++;
-            break;
+            return false;
         }
     }
-    if ($n == 0) {
-        return true;
-    } else {
-        return false;
-    }
+    return true;
 }
