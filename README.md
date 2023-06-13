@@ -11,7 +11,9 @@ Project "Brain-games" is a collection of five math games:
 - "brain-prime"
 
 ### Project
-The project is running on PHP 8.1.2
+The project is running on PHP >= 8.1.
+Also you will need a Make. For Ubuntu use **"sudo apt install make"**. For Windows,
+you can use [Chocolatey](https://chocolatey.org/install), then **"choco install make".**
 
 ### Install:
 $ git clone https://github.com/daniileontev/php-project-45
