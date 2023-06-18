@@ -2,7 +2,7 @@
 
 namespace BrainGames\Gcd;
 
-function startGcdGame()
+function startGcdGame(): array
 {
 
         $num1 = mt_rand(1, 100);

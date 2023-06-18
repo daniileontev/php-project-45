@@ -2,7 +2,7 @@
 
 namespace BrainGames\Progression;
 
-function startProgressionGame()
+function startProgressionGame(): array
 {
     $startingNumber = mt_rand(1, 11);
     $step = mt_rand(1, 5);

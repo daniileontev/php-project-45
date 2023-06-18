@@ -2,7 +2,7 @@
 
 namespace BrainGames\Prime;
 
-function startPrimeGame()
+function startPrimeGame(): array
 {
     $question = mt_rand(1, 100);
     $correctAnswer = isPrime($question) ? "yes" : "no";

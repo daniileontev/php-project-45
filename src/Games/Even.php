@@ -2,7 +2,7 @@
 
 namespace BrainGames\Even;
 
-function startEvenGame()
+function startEvenGame(): array
 {
     $question = mt_rand(1, 100);
     $correctAnswer = numCheck($question) ? "yes" : "no";

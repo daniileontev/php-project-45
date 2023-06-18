@@ -2,7 +2,7 @@
 
 namespace BrainGames\Calc;
 
-function startCalcGame()
+function startCalcGame(): array
 {
     $num1 = mt_rand(0, 10);
     $num2 = mt_rand(0, 20);
