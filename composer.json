@@ -2,11 +2,11 @@
     "name": "hexlet/code",
     "bin": [
         "bin/brain-games",
-        "src/Games/brain-even",
-        "src/Games/brain-calc",
-        "src/Games/brain-gcd",
-        "src/Games/brain-progression",
-        "src/Games/brain-prime"
+        "bin/brain-calc",
+        "bin/brain-even",
+        "bin/brain-gcd",
+        "bin/brain-progression",
+        "bin/brain-prime"
     ],
     "description": "First project for study, by Hexlet.",
     "type": "library",
@@ -14,6 +14,11 @@
     "autoload": {
         "files": [
             "src/Cli.php",
+            "src/Games/Calc.php",
+            "src/Games/Progression.php",
+            "src/Games/Prime.php",
+            "src/Games/Gcd.php",
+            "src/Games/Even.php",
             "src/Engine.php"
         ],
         "psr-4": {
