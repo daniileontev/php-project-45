@@ -10,7 +10,7 @@ function startPrimeGame(): array
     return array($question, $correctAnswer);
 }
 
-function isPrime($num): bool
+function isPrime(string $num): bool
 {
     if ($num <= 1) {
         return false; // числа 0 и 1 не являются простыми

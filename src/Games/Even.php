@@ -10,7 +10,7 @@ function startEvenGame(): array
     return array($question, $correctAnswer);
 }
 
-function numCheck($number): bool
+function numCheck(string $number): bool
 {
     if ($number % 2 == 0) {
         return true;
