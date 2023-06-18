@@ -1,105 +1,58 @@
 <?php
 
-namespace BrainGames\src\Engine;
+namespace BrainGames\Engine;
 
-/*
- * start communication and games
- */
+use function Cli\line;
+use function Cli\prompt;
 
-use function BrainGames\src\Cli\greeting;
-
-function getStart(string $gameName): void
+function getGameLogic(string $gameName)
 {
-    $userName = greeting();
     switch ($gameName) {
         case "calc":
-            echo("What is the result of the expression?\n");
-            startCalcGame($userName);
-            break;
+            $gameRule = 'What is the result of the expression?';
+            $gameLogic = "BrainGames\Calc\startCalcGame";
+            return [$gameRule, $gameLogic];
         case "even":
-            echo("Answer 'yes' if the number is even, otherwise answer 'no'.\n");
-            startEvenGame($userName);
-            break;
+            $gameRule = 'Answer "yes" if the number is even, otherwise answer "no".';
+            $gameLogic = "BrainGames\Even\startEvenGame";
+            return [$gameRule, $gameLogic];
         case 'gcd':
-            echo("Find the greatest common divisor of given numbers.\n");
-            startGcdGame($userName);
-            break;
+            $gameRule = "Find the greatest common divisor of given numbers.";
+            $gameLogic = "BrainGames\Gcd\startGcdGame";
+            return [$gameRule, $gameLogic];
         case "progression":
-            echo("What number is missing in the progression?\n");
-            startProgressionGame($userName);
-            break;
+            $gameRule = "What number is missing in the progression?";
+            $gameLogic = "BrainGames\Progression\startProgressionGame";
+            return [$gameRule, $gameLogic];
         case "prime":
-            echo ("Answer 'yes' if given number is prime. Otherwise answer 'no'.\n");
-            startPrimeGame($userName);
-            break;
+            $gameRule = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+            $gameLogic = "BrainGames\Prime\startPrimeGame";
+            return [$gameRule, $gameLogic];
         default:
             echo "Unknown game specified!\n";
-            break;
+            exit(1);
     }
 }
 
-/*
- * brain-calc functions
- */
-
-function generateNumber(): int
+function getStartGame(string $name, string $game): void
 {
-    return mt_rand(1, 10);
-}
+    [$gameRule, $gameLogic] = getGameLogic($game);
+    line($gameRule);
+    $correctAnswerCount = 0;
+    while ($correctAnswerCount < 3) {
+        [$question, $correctAnswer] = $gameLogic();
+        line("Question: %s", $question);
 
-function addition($num1, $num2)
-{
-    return $num1 + $num2;
-}
+        $userAnswer = prompt('Your answer');
 
-function subtraction($num1, $num2)
-{
-    return $num1 - $num2;
-}
-function multiplication($num1, $num2): float|int
-{
-    return $num1 * $num2;
-}
-
-/*
- * brain-even functions
- */
-
-function numCheck($number): bool
-{
-    if ($number % 2 == 0) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-/*
- * brain-gcd functions
- */
-
-function dividerCheck($num1, $num2)
-{
-    while ($num2 != 0) {
-        $tmp = $num1 % $num2;
-        $num1 = $num2;
-        $num2 = $tmp;
-    }
-    return $num1;
-}
-/*
- * brain-prime functions
- */
-
-function isPrime($num): bool
-{
-    if ($num <= 1) {
-        return false; // числа 0 и 1 не являются простыми
-    }
-    for ($i = 2; $i <= sqrt($num); $i++) {
-        if ($num % $i == 0) {
-            return false;
+        if ($userAnswer === strval($correctAnswer)) {
+            line("Correct!");
+            $correctAnswerCount += 1;
+        } else {
+            line("'%s' is wrong answer ;(. Correct answer was '%s'.", $userAnswer, $correctAnswer);
+            line("Let's try again, %s!", $name);
+            return;
         }
     }
-    return true;
+    line('Congratulations, %s!', $name);
 }
