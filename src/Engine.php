@@ -25,7 +25,7 @@ function getGameLogic(string $gameName)
             $gameLogic = "BrainGames\Progression\startProgressionGame";
             return [$gameRule, $gameLogic];
         case "prime":
-            $gameRule = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+            $gameRule = 'Answer "yes" if given number is prime. Otherwise answer "no".';
             $gameLogic = "BrainGames\Prime\startPrimeGame";
             return [$gameRule, $gameLogic];
         default:
