@@ -13,7 +13,7 @@ function startGcdGame(): array
         return array($question, $correctAnswer);
 }
 
-function dividerCheck(string $num1, string $num2): int|string
+function dividerCheck(int $num1, int $num2): int
 {
     while ($num2 != 0) {
         $tmp = $num1 % $num2;
