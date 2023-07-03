@@ -24,7 +24,9 @@ $ cd php-project-45
 
 $ make install
 ### How to play?
-To start the game, enter the command "make {game-name}". Ex. make brain-even.
+To start the game, enter the command **"make {game-name}"**. Ex. make brain-even. 
+
+Also you can see command examples in the Makefile.
 ### Examples of installation and gameplay:
 ### brain-even:
 [![asciicast](https://asciinema.org/a/XhYFolbgGmLQckrZ0eVjVzjgy.svg)](https://asciinema.org/a/XhYFolbgGmLQckrZ0eVjVzjgy)
