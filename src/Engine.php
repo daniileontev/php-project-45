@@ -5,42 +5,16 @@ namespace BrainGames\Engine;
 use function cli\line;
 use function cli\prompt;
 
-function getGameLogic(string $gameName)
+function getStartGame(string $line, callable $runner): void
 {
-    switch ($gameName) {
-        case "calc":
-            $gameRule = 'What is the result of the expression?';
-            $gameLogic = "BrainGames\Calc\startCalcGame";
-            return [$gameRule, $gameLogic];
-        case "even":
-            $gameRule = 'Answer "yes" if the number is even, otherwise answer "no".';
-            $gameLogic = "BrainGames\Even\startEvenGame";
-            return [$gameRule, $gameLogic];
-        case 'gcd':
-            $gameRule = "Find the greatest common divisor of given numbers.";
-            $gameLogic = "BrainGames\Gcd\startGcdGame";
-            return [$gameRule, $gameLogic];
-        case "progression":
-            $gameRule = "What number is missing in the progression?";
-            $gameLogic = "BrainGames\Progression\startProgressionGame";
-            return [$gameRule, $gameLogic];
-        case "prime":
-            $gameRule = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-            $gameLogic = "BrainGames\Prime\startPrimeGame";
-            return [$gameRule, $gameLogic];
-        default:
-            echo "Unknown game specified!\n";
-            exit(1);
-    }
-}
+    line('Welcome to the Brain Games!');
+    $name = prompt('May I have your name?');
+    line("Hello, %s!", $name);
+    line('%s', $line);
 
-function getStartGame(string $name, string $game): void
-{
-    [$gameRule, $gameLogic] = getGameLogic($game);
-    line($gameRule);
     $correctAnswerCount = 0;
     while ($correctAnswerCount < 3) {
-        [$question, $correctAnswer] = $gameLogic();
+        [$question, $correctAnswer] = $runner();
         line("Question: %s", $question);
 
         $userAnswer = prompt('Your answer');
