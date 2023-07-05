@@ -2,12 +2,21 @@
 
 namespace BrainGames\Even;
 
-function startEvenGame(): array
-{
-    $question = mt_rand(1, 100);
-    $correctAnswer = numCheck($question) ? "yes" : "no";
+use function BrainGames\Engine\getStartGame;
 
-    return array($question, $correctAnswer);
+const GAMERULE = 'Answer "yes" if the number is even, otherwise answer "no".';
+
+function runner(): void
+{
+    $getData = function () {
+
+        $question = mt_rand(1, 100);
+        $correctAnswer = numCheck($question) ? "yes" : "no";
+
+        return array($question, $correctAnswer);
+    };
+
+    getStartGame(GAMERULE, $getData);
 }
 
 function numCheck(int $number): bool

@@ -2,12 +2,19 @@
 
 namespace BrainGames\Prime;
 
-function startPrimeGame(): array
-{
-    $question = mt_rand(1, 100);
-    $correctAnswer = isPrime($question) ? "yes" : "no";
+use function BrainGames\Engine\getStartGame;
 
-    return array($question, $correctAnswer);
+const GAMERULE = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+
+function runner(): void
+{
+    $getData = function () {
+
+        $question = mt_rand(1, 100);
+        $correctAnswer = isPrime($question) ? "yes" : "no";
+        return array($question, $correctAnswer);
+    };
+    getStartGame(GAMERULE, $getData);
 }
 
 function isPrime(int $num): bool
