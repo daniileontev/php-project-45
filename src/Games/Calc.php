@@ -9,7 +9,7 @@ use const BrainGames\Engine\GAME_ROUNDS;
 const GAME_RULE = 'What is the result of the expression?';
 
 
-function getCorrectAnswer(int $num1, int $num2, string $operator): float|int
+function getCorrectAnswer(int $num1, int $num2, string $operator): int
 {
     switch ($operator) {
         case '+':
