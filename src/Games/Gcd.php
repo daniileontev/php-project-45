@@ -4,22 +4,11 @@ namespace BrainGames\Gcd;
 
 use function BrainGames\Engine\getStartGame;
 
-const GAMERULE = 'Find the greatest common divisor of given numbers.';
+use const BrainGames\Engine\GAME_ROUNDS;
 
-function runner(): void
-{
-    $getData = function () {
-        $num1 = mt_rand(1, 100);
-        $num2 = mt_rand(1, 100);
-        $question = "$num1 $num2";
-        $correctAnswer = dividerCheck($num1, $num2);
+const GAME_RULE = 'Find the greatest common divisor of given numbers.';
 
-        return array($question, $correctAnswer);
-    };
-    getStartGame(GAMERULE, $getData);
-}
-
-function dividerCheck(int $num1, int $num2): int
+function getGcd(int $num1, int $num2): int
 {
     while ($num2 != 0) {
         $tmp = $num1 % $num2;
@@ -27,4 +16,22 @@ function dividerCheck(int $num1, int $num2): int
         $num2 = $tmp;
     }
     return $num1;
+}
+
+function getGameData(): array
+{
+    $gameData = [];
+    for ($i = 0; $i < GAME_ROUNDS; $i += 1) {
+        $num1 = mt_rand(1, 100);
+        $num2 = mt_rand(1, 100);
+        $question = "$num1 $num2";
+        $correctAnswer = getGcd($num1, $num2);
+        $gameData[$i] = [$question, $correctAnswer];
+    }
+    return $gameData;
+}
+
+function runner(): void
+{
+    getStartGame(GAME_RULE, getGameData());
 }

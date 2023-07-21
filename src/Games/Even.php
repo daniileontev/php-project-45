@@ -4,26 +4,27 @@ namespace BrainGames\Even;
 
 use function BrainGames\Engine\getStartGame;
 
-const GAMERULE = 'Answer "yes" if the number is even, otherwise answer "no".';
+use const BrainGames\Engine\GAME_ROUNDS;
+
+const GAME_RULE = 'Answer "yes" if the number is even, otherwise answer "no".';
+
+function isEven(int $number): bool
+{
+    return $number % 2 == 0;
+}
+
+function getGameData(): array
+{
+    $gameData = [];
+    for ($i = 0; $i < GAME_ROUNDS; $i += 1) {
+        $question = mt_rand(1, 100);
+        $correctAnswer = isEven($question) ? "yes" : "no";
+        $gameData[$i] = [$question, $correctAnswer];
+    }
+    return $gameData;
+}
 
 function runner(): void
 {
-    $getData = function () {
-
-        $question = mt_rand(1, 100);
-        $correctAnswer = numCheck($question) ? "yes" : "no";
-
-        return array($question, $correctAnswer);
-    };
-
-    getStartGame(GAMERULE, $getData);
-}
-
-function numCheck(int $number): bool
-{
-    if ($number % 2 == 0) {
-        return true;
-    } else {
-        return false;
-    }
+    getStartGame(GAME_RULE, getGameData());
 }
