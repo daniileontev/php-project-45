@@ -13,7 +13,7 @@ function isEven(int $number): bool
     return $number % 2 == 0;
 }
 
-function getGameData(): array
+function runEven(): void
 {
     $gameData = [];
     for ($i = 0; $i < ROUNDS_COUNT; $i += 1) {
@@ -21,10 +21,5 @@ function getGameData(): array
         $correctAnswer = isEven($question) ? "yes" : "no";
         $gameData[$i] = [$question, $correctAnswer];
     }
-    return $gameData;
-}
-
-function run(): void
-{
-    runGame(GAME_RULE, getGameData());
+    runGame(GAME_RULE, $gameData);
 }

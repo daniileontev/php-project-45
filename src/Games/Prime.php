@@ -22,7 +22,7 @@ function isPrime(int $num): bool
     return true;
 }
 
-function getGameData(): array
+function runPrime(): void
 {
     $gameData = [];
     for ($i = 0; $i < ROUNDS_COUNT; $i += 1) {
@@ -30,10 +30,5 @@ function getGameData(): array
         $correctAnswer = isPrime($question) ? "yes" : "no";
         $gameData[$i] = [$question, $correctAnswer];
     }
-    return $gameData;
-}
-
-function run(): void
-{
-    runGame(GAME_RULE, getGameData());
+    runGame(GAME_RULE, $gameData);
 }

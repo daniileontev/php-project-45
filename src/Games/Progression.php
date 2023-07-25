@@ -24,22 +24,16 @@ function makeProgression(): array
 }
 
 
-function getGameData(): array
+function runProgression(): void
 {
-    $result = [];
+    $gameData = [];
     for ($i = 0; $i < ROUNDS_COUNT; $i += 1) {
         $progression = makeProgression();
         $hiddenNum = mt_rand(0, 9);
         $correctAnswer = (string) $progression[$hiddenNum];
         $progression[$hiddenNum] = '..';
         $progressionLine = implode(' ', $progression);
-        $result[] = [$progressionLine, $correctAnswer];
+        $gameData[] = [$progressionLine, $correctAnswer];
     }
-    return $result;
-}
-
-
-function run(): void
-{
-    runGame(GAME_RULE, getGameData());
+    runGame(GAME_RULE, $gameData);
 }

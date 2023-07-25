@@ -23,7 +23,7 @@ function calc(int $num1, int $num2, string $operator): int
     }
 }
 
-function getGameData(): array
+function runCalc(): void
 {
     $gameData = [];
     for ($i = 0; $i < ROUNDS_COUNT; $i += 1) {
@@ -36,10 +36,5 @@ function getGameData(): array
 
         $gameData[$i] = [$question, $correctAnswer];
     }
-    return $gameData;
-}
-
-function run(): void
-{
-    runGame(GAME_RULE, getGameData());
+    runGame(GAME_RULE, $gameData);
 }

@@ -18,7 +18,7 @@ function getGcd(int $num1, int $num2): int
     return $num1;
 }
 
-function getGameData(): array
+function runGcd(): void
 {
     $gameData = [];
     for ($i = 0; $i < ROUNDS_COUNT; $i += 1) {
@@ -28,10 +28,5 @@ function getGameData(): array
         $correctAnswer = (string) getGcd($num1, $num2);
         $gameData[$i] = [$question, $correctAnswer];
     }
-    return $gameData;
-}
-
-function run(): void
-{
-    runGame(GAME_RULE, getGameData());
+    runGame(GAME_RULE, $gameData);
 }
