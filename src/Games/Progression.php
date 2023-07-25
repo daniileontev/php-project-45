@@ -2,14 +2,14 @@
 
 namespace BrainGames\Progression;
 
-use function BrainGames\Engine\getStartGame;
+use function BrainGames\Engine\runGame;
 
-use const BrainGames\Engine\GAME_ROUNDS;
+use const BrainGames\Engine\ROUNDS_COUNT;
 
 const GAME_RULE = 'What number is missing in the progression?';
 
 
-function getProgression()
+function makeProgression(): array
 {
     $startingNumber = mt_rand(1, 35);
     $step = mt_rand(2, 5);
@@ -27,19 +27,19 @@ function getProgression()
 function getGameData(): array
 {
     $result = [];
-    for ($i = 0; $i < GAME_ROUNDS; $i += 1) {
-        $progression = getProgression();
+    for ($i = 0; $i < ROUNDS_COUNT; $i += 1) {
+        $progression = makeProgression();
         $hiddenNum = mt_rand(0, 9);
-        $correctAnswer = $progression[$hiddenNum];
+        $correctAnswer = (string) $progression[$hiddenNum];
         $progression[$hiddenNum] = '..';
-        $progressionLine = (implode(' ', $progression));
+        $progressionLine = implode(' ', $progression);
         $result[] = [$progressionLine, $correctAnswer];
     }
     return $result;
 }
 
 
-function runner(): void
+function run(): void
 {
-    getStartGame(GAME_RULE, getGameData());
+    runGame(GAME_RULE, getGameData());
 }
