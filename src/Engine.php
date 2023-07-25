@@ -14,8 +14,8 @@ function runGame(string $task, array $gameData): void
     line("Hello, %s!", $name);
     line($task);
 
-    foreach ($gameData as [$expression, $correctAnswer]) {
-        line("Question: %s", $expression);
+    foreach ($gameData as [$question, $correctAnswer]) {
+        line("Question: %s", $question);
 
         $answer = prompt('Your answer');
 
