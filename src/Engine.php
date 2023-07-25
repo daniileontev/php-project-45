@@ -29,4 +29,3 @@ function runGame(string $task, array $gameData): void
     }
     line("Congratulations, %s!", $name);
 }
-
