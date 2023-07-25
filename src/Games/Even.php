@@ -18,7 +18,7 @@ function getGameData(): array
     $gameData = [];
     for ($i = 0; $i < ROUNDS_COUNT; $i += 1) {
         $question = mt_rand(1, 100);
-        $correctAnswer = (string) isEven($question) ? "yes" : "no";
+        $correctAnswer = isEven($question) ? "yes" : "no";
         $gameData[$i] = [$question, $correctAnswer];
     }
     return $gameData;
