@@ -21,12 +21,13 @@ function makeProgression(int $startingNumber, int $step, int $length): array
 
 function runProgression(): void
 {
-    $startingNumber = mt_rand(1, 35);
-    $step = mt_rand(2, 5);
-    $length = 10;
     $gameData = [];
 
     for ($i = 0; $i < ROUNDS_COUNT; $i += 1) {
+        $startingNumber = mt_rand(1, 35);
+        $step = mt_rand(2, 5);
+        $length = 10;
+
         $progression = makeProgression($startingNumber, $step, $length);
         $hiddenNum = mt_rand(0, 9);
         $correctAnswer = (string) $progression[$hiddenNum];
