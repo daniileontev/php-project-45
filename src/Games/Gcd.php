@@ -1,6 +1,6 @@
 <?php
 
-namespace BrainGames\Gcd;
+namespace BrainGames\Games\Gcd;
 
 use function BrainGames\Engine\runGame;
 
@@ -26,7 +26,7 @@ function runGcd(): void
         $num2 = mt_rand(1, 100);
         $question = "$num1 $num2";
         $correctAnswer = (string) getGcd($num1, $num2);
-        $gameData[$i] = [$question, $correctAnswer];
+        $gameData[] = [$question, $correctAnswer];
     }
     runGame(GAME_RULE, $gameData);
 }

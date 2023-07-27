@@ -1,6 +1,6 @@
 <?php
 
-namespace BrainGames\Calc;
+namespace BrainGames\Games\Calc;
 
 use function BrainGames\Engine\runGame;
 
@@ -34,7 +34,7 @@ function runCalc(): void
         $correctAnswer = (string) calc($num1, $num2, $operator);
         $question = "$num1 $operator $num2";
 
-        $gameData[$i] = [$question, $correctAnswer];
+        $gameData[] = [$question, $correctAnswer];
     }
     runGame(GAME_RULE, $gameData);
 }

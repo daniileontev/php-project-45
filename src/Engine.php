@@ -11,7 +11,7 @@ function runGame(string $task, array $gameData): void
 {
     line('Welcome to the Brain Games!');
     $name = prompt('May I have your name?');
-    line("Hello, %s!", $name);
+    line('Hello, %s!', $name);
     line($task);
 
     foreach ($gameData as [$question, $correctAnswer]) {
@@ -27,5 +27,5 @@ function runGame(string $task, array $gameData): void
         }
         line('Correct!');
     }
-    line("Congratulations, %s!", $name);
+    line('Congratulations, %s!', $name);
 }

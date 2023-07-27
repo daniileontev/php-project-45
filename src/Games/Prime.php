@@ -1,6 +1,6 @@
 <?php
 
-namespace BrainGames\Prime;
+namespace BrainGames\Games\Prime;
 
 use function BrainGames\Engine\runGame;
 
@@ -27,8 +27,8 @@ function runPrime(): void
     $gameData = [];
     for ($i = 0; $i < ROUNDS_COUNT; $i += 1) {
         $question = mt_rand(1, 100);
-        $correctAnswer = isPrime($question) ? "yes" : "no";
-        $gameData[$i] = [$question, $correctAnswer];
+        $correctAnswer = isPrime($question) ? 'yes' : 'no';
+        $gameData[] = [$question, $correctAnswer];
     }
     runGame(GAME_RULE, $gameData);
 }
